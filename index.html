@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Encrypt</title>
+</head>
+<body>
+ <br>
+  <div style="text-align: center;">
+    <strong>Enter your text(ru/en)</strong><br>
+    <br>
+    <input id="entered_text" type="text" size="80"><br>
+    <input id="shift" type="number" min="0" value="1" step="1">
+    <br>
+    <br>
+    <strong>Choose action</strong><br>
+    <br>
+    <input onclick = "coding()" type="button" value="Encrypt">
+    <input onclick = "decoding()" type="button" value="Decrypt">
+    <br>
+    <br>
+    <br>
+    <strong>Result:</strong><br>
+    <br>
+    <input id="encrypted_text" size="80">
+  </div>
+
+  <script>
+function coding(){
+    let enteredTextValue = document.getElementById("entered_text").value;
+    let shiftValue = +document.getElementById("shift").value;
+    let encryptedText = document.getElementById('encrypted_text');
+    let str = "";
+       for (let i = 0; i < enteredTextValue.length; i++){ 
+        let code = enteredTextValue.charCodeAt(i)
+          code += shiftValue
+          str += String.fromCharCode(code)
+        }
+   encryptedText.value = str;
+};
+
+function decoding(){
+    let encryptedTextValue = document.getElementById("encrypted_text").value;
+    let shiftValue = document.getElementById("shift").value;
+    let encryptedText = document.getElementById('encrypted_text');
+    let str = "";
+       for (let i = 0; i < encryptedTextValue.length; i++){ 
+        let code = encryptedTextValue.charCodeAt(i)
+          code -= shiftValue
+          str += String.fromCharCode(code)
+        }
+   encryptedText.value = str;
+};
+  </script>
+</body>
+</html>
